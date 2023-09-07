@@ -1,0 +1,31 @@
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.5.xsd">
+
+    <!-- Create the users table -->
+
+
+
+    <changeSet id="1" author="NK">
+        <sql>
+            CREATE TABLE users(
+            user_id int IDENTITY(100,1) PRIMARY KEY,
+            username VARCHAR(50) not null,
+            phone_number VARCHAR(10) NOT null  CHECK (phone_number LIKE '[6-9]%' AND LEN(phone_number) = 10 AND phone_number NOT LIKE '%[^0-9]%'),
+            created_at DATETIME not null
+            )
+        </sql>
+    </changeSet>
+
+    <!-- Insert into the users table -->
+    <changeSet id="2" author="NK">
+        <sql>
+            insert into users values('User_1',	'9912345678','2020-01-1'),('User_2','9912345677','2020-01-1'),('User_3','8812345679','2020-01-02'),
+            ('User_4','7712345678',	'2020-01-03'),
+            ('User_5','7799123456',	'2020-01-04'),
+            ('User_6','9988776655','2020-01-05')
+
+        </sql>
+    </changeSet>
+
+</databaseChangeLog>

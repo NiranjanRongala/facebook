@@ -1,0 +1,25 @@
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.4.xsd">
+
+
+    <include
+            file="classpath:db/changelog/Create_Users_Table.xml"
+            relativeToChangelogFile="false" />
+
+    <include
+            file="classpath:db/changelog/Create_Followers_Table.xml"
+            relativeToChangelogFile="false" />
+    <include
+            file="classpath:db/changelog/Create_Posts_Table.xml"
+            relativeToChangelogFile="false" />
+    <include
+            file="classpath:db/changelog/Create_Comments_Table.xml"
+            relativeToChangelogFile="false" />
+    <include
+            file="classpath:db/changelog/Create_Likes_Table.xml"
+            relativeToChangelogFile="false" />
+
+
+</databaseChangeLog>
