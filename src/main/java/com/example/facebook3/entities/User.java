@@ -18,6 +18,7 @@ public class User {
     private LocalDateTime created_at;
 
 
+    
     @OneToMany(mappedBy = "users")
     @JsonIgnore // ignore the property from serialization
     private List<Follower> followers = new ArrayList<Follower>();
