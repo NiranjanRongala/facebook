@@ -27,5 +27,21 @@
 
         </sql>
     </changeSet>
+    <changeSet id="3" author="NK">
+        <sql>
+            ALTER  TABLE users
+            ADD updated_at datetime
+
+        </sql>
+    </changeSet>
+    <changeSet id="4" author="NK">
+        <sql>
+
+            UPDATE users
+            SET updated_at = '2020-01-02'
+            WHERE user_id=100
+
+        </sql>
+    </changeSet>
 
 </databaseChangeLog>

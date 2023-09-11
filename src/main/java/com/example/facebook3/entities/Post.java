@@ -14,6 +14,7 @@ public class Post {
     private int user_id;
     private String post;
     private LocalDateTime created_at;
+    private LocalDateTime updated_at;
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id", updatable = false, insertable = false)
     @JsonIgnore
@@ -49,6 +50,14 @@ public class Post {
 
     public void setCreated_at(LocalDateTime created_at) {
         this.created_at = created_at;
+    }
+
+    public LocalDateTime getUpdated_at() {
+        return updated_at;
+    }
+
+    public void setUpdated_at(LocalDateTime updated_at) {
+        this.updated_at = updated_at;
     }
 
     public User getUsers() {

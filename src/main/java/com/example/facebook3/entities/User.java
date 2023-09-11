@@ -16,9 +16,9 @@ public class User {
     private String username;
     private String phone_number;
     private LocalDateTime created_at;
+    private LocalDateTime updated_at;
 
 
-    
     @OneToMany(mappedBy = "users")
     @JsonIgnore // ignore the property from serialization
     private List<Follower> followers = new ArrayList<Follower>();
@@ -110,5 +110,13 @@ public class User {
 
     public void setLikes(List<Like> likes) {
         this.likes = likes;
+    }
+
+    public LocalDateTime getUpdated_at() {
+        return updated_at;
+    }
+
+    public void setUpdated_at(LocalDateTime updated_at) {
+        this.updated_at = updated_at;
     }
 }

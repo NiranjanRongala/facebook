@@ -13,6 +13,7 @@ public class Like {
     private int like_id;
     private int post_id;
     private int user_id;
+    private LocalDateTime updated_at;
 
     private LocalDateTime created_at;
     @ManyToOne(fetch = FetchType.LAZY)
@@ -58,5 +59,13 @@ public class Like {
 
     public void setUsers(User users) {
         this.users = users;
+    }
+
+    public LocalDateTime getUpdated_at() {
+        return updated_at;
+    }
+
+    public void setUpdated_at(LocalDateTime updated_at) {
+        this.updated_at = updated_at;
     }
 }

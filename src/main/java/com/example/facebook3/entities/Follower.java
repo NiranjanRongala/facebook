@@ -14,6 +14,7 @@ public class Follower {
     private int followee_id;
     private int follower_id;
     private LocalDateTime created_at;
+    private LocalDateTime updated_at;
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "followee_id", updatable = false, insertable = false)
     @JsonIgnore
@@ -69,5 +70,13 @@ public class Follower {
 
     public void setUsers1(User users1) {
         this.users1 = users1;
+    }
+
+    public LocalDateTime getUpdated_at() {
+        return updated_at;
+    }
+
+    public void setUpdated_at(LocalDateTime updated_at) {
+        this.updated_at = updated_at;
     }
 }

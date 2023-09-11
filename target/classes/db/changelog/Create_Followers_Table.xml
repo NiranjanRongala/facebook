@@ -30,6 +30,22 @@
         </sql>
 
     </changeSet>
+    <changeSet id="13" author="NK">
+        <sql>
+            ALTER  TABLE followers
+            ADD updated_at datetime
+
+        </sql>
+    </changeSet>
+    <changeSet id="14" author="NK">
+        <sql>
+
+            UPDATE followers
+            SET updated_at = '2020-01-03'
+            WHERE s_no=50
+
+        </sql>
+    </changeSet>
 
 
 </databaseChangeLog>

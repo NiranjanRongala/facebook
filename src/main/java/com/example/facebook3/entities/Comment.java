@@ -2,6 +2,7 @@ package com.example.facebook3.entities;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
+import jdk.jfr.DataAmount;
 
 import java.time.LocalDateTime;
 
@@ -14,6 +15,7 @@ public class Comment {
     private int post_id;
     private int user_id;
     private String comment;
+    private LocalDateTime updated_at;
     private LocalDateTime created_at;
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id", updatable = false, insertable = false)
@@ -66,5 +68,13 @@ public class Comment {
 
     public void setUsers(User users) {
         this.users = users;
+    }
+
+    public LocalDateTime getUpdated_at() {
+        return updated_at;
+    }
+
+    public void setUpdated_at(LocalDateTime updated_at) {
+        this.updated_at = updated_at;
     }
 }

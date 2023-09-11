@@ -31,5 +31,21 @@
 
         </sql>
     </changeSet>
+    <changeSet id="43" author="NK">
+        <sql>
+            ALTER  TABLE likes
+            ADD updated_at datetime
+
+        </sql>
+    </changeSet>
+    <changeSet id="44" author="NK">
+        <sql>
+
+            UPDATE likes
+            SET updated_at = '2020-01-27'
+            WHERE like_id=5000
+
+        </sql>
+    </changeSet>
 
 </databaseChangeLog>

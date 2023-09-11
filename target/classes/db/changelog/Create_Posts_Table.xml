@@ -31,5 +31,21 @@
 
         </sql>
     </changeSet>
+    <changeSet id="23" author="NK">
+        <sql>
+            ALTER  TABLE posts
+            ADD updated_at datetime
+
+        </sql>
+    </changeSet>
+    <changeSet id="24" author="NK">
+        <sql>
+
+            UPDATE posts
+            SET updated_at = '2020-01-25'
+            WHERE post_id=1
+
+        </sql>
+    </changeSet>
 
 </databaseChangeLog>
