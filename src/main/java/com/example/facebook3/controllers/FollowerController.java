@@ -14,29 +14,29 @@ public class FollowerController {
     @Autowired
     private FollowerService followersService;
 
-    @GetMapping("/ListFollowers")
+    @GetMapping("/followers")
     public List<Follower> getUsers() throws InvalidNameFormatException {
         return followersService.getFollowers();
 
     }
 
-    @PostMapping("/addFollower")
+    @PostMapping("/follower")
     public Follower addFollower(@RequestBody Follower followers) {
         return followersService.addFollower(followers);
     }
 
-    @PutMapping("/Follower/{s_no}/userid/{userid}")
-    public Follower updateFollower(@PathVariable("s_no") int s_no, @PathVariable("userid") int userid) throws InvalidNameFormatException {
+    @PutMapping("/follower/{s-no}/followee-id/{followee-id}")
+    public Follower updateFollower(@PathVariable("s-no") int s_no, @PathVariable("followee-id") int userid) throws InvalidNameFormatException {
         return followersService.updateFollower(s_no, userid);
     }
 
-    @DeleteMapping("/removeFollower/{s_no}")
-    public void deletefollower(@PathVariable("s_no") int s_no) throws InvalidNameFormatException {
+    @DeleteMapping("/follower/{s-no}")
+    public void deletefollower(@PathVariable("s-no") int s_no) throws InvalidNameFormatException {
         followersService.removeFollower(s_no);
     }
 
-    @GetMapping("/listof_followers_particular_user/{userid}")
-    public List<Follower> get(@PathVariable("userid") int userid) throws InvalidNameFormatException {
+    @GetMapping("/followers-for-particular-followee/{followee-id}")
+    public List<Follower> get(@PathVariable("followee-id") int userid) throws InvalidNameFormatException {
         return followersService.getFollowersforParticularUser(userid);
     }
 

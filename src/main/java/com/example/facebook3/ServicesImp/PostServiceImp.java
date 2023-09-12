@@ -30,13 +30,13 @@ public class PostServiceImp implements PostService {
     @Override
     public Post addPost(Post posts) throws InvalidNameFormatException {
 
-        User user = usersRepo.findById(posts.getUser_id()).orElseThrow(() -> new InvalidNameFormatException("id is not found"));
+        User user = usersRepo.findById(posts.getUserid()).orElseThrow(() -> new InvalidNameFormatException("id is not found"));
 
         Post posts1 = new Post();
 
-        posts1.setUser_id(posts.getUser_id());
+        posts1.setUserid(posts.getUserid());
         posts1.setPost(posts.getPost());
-        posts1.setCreated_at(posts.getCreated_at());
+        posts1.setCreatedat(posts.getCreatedat());
 
         return postsRepo.save(posts1);
     }
@@ -73,7 +73,7 @@ public class PostServiceImp implements PostService {
 
     @Override
     public List<String> getfeed(int userid) throws InvalidNameFormatException {
-        List<String> a = postsRepo.getfeeds(userid);
+        List<String> a = postsRepo.getFeeds(userid);
         if (a.isEmpty())
             throw new InvalidNameFormatException("there is no posts to feed");
 

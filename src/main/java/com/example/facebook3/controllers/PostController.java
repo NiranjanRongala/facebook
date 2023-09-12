@@ -13,35 +13,35 @@ public class PostController {
     @Autowired
     private PostService postsService;
 
-    @GetMapping("/getPost")
+    @GetMapping("/posts")
     public List<Post> getPosts() throws InvalidNameFormatException {
         return postsService.getPosts();
     }
 
-    @PostMapping("/addpost")
+    @PostMapping("/post")
     public Post addPost(@RequestBody Post posts) throws InvalidNameFormatException {
         return postsService.addPost(posts);
     }
 
-    @PutMapping("/post/{postid}/{post}")
-    public Post updatePost(@PathVariable("postid") int post_id, @PathVariable("post") String post) throws InvalidNameFormatException {
+    @PutMapping("/post-id/{post-id}/post/{post}")
+    public Post updatePost(@PathVariable("post-id") int post_id, @PathVariable("post") String post) throws InvalidNameFormatException {
 
         return postsService.updatePost(post_id, post);
 
     }
 
-    @DeleteMapping("/removePost/{postid}")
-    public void removePost(@PathVariable("postid") int post_id) throws InvalidNameFormatException {
+    @DeleteMapping("/post/{post-id}")
+    public void removePost(@PathVariable("post-id") int post_id) throws InvalidNameFormatException {
         postsService.removePost(post_id);
     }
 
-    @GetMapping("/ListPostforParticularUser/{userid}")
-    public List<Post> getpostsforparticularuser(@PathVariable("userid") int userid) throws InvalidNameFormatException {
+    @GetMapping("/posts-for-particular-user/{user-id}")
+    public List<Post> getpostsforparticularuser(@PathVariable("user-id") int userid) throws InvalidNameFormatException {
         return postsService.getPostParticularUser(userid);
     }
 
-    @GetMapping("/Listfeed/{followee_id}")
-    public List<String> getfeed(@PathVariable("followee_id") int id) throws InvalidNameFormatException {
+    @GetMapping("/feed/{followee-id}")
+    public List<String> getfeed(@PathVariable("followee-id") int id) throws InvalidNameFormatException {
         return postsService.getfeed(id);
     }
 }

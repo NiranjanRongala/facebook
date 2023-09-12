@@ -8,9 +8,9 @@ import org.springframework.data.repository.query.Param;
 import java.util.List;
 
 public interface PostRepo extends JpaRepository<Post, Integer> {
-    @Query("SELECT p FROM Post p WHERE p.user_id=:userid")
+    @Query("SELECT p FROM Post p WHERE p.userid=:userid")
     List<Post> getPosts(@Param("userid") int userid);
 
-    @Query("select post from Post where user_id in(select follower_id from Follower WHERE followee_id=:userId)")
-    List<String> getfeeds(@Param("userId") int userid);
+    @Query("select post from Post where userid in(select followerid from Follower WHERE followeeid=:userId)")
+    List<String> getFeeds(@Param("userId") int userid);
 }

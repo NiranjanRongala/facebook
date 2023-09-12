@@ -28,9 +28,9 @@ public class FollowerServiceImp implements FollowerService {
     @Override
     public Follower addFollower(Follower followers) {
         Follower followers1 = new Follower();
-        followers1.setFollowee_id(followers.getFollowee_id());
-        followers1.setFollower_id(followers.getFollower_id());
-        followers1.setCreated_at(followers.getCreated_at());
+        followers1.setFolloweeid(followers.getFolloweeid());
+        followers1.setFollowerid(followers.getFollowerid());
+        followers1.setCreatedat(followers.getCreatedat());
         return followersRepo.save(followers1);
     }
 
@@ -40,7 +40,7 @@ public class FollowerServiceImp implements FollowerService {
         if (followers.isEmpty())
             throw new InvalidNameFormatException("id is not found");
         Follower followers1 = followers.get();
-        followers1.setFollower_id(user_id);
+        followers1.setFollowerid(user_id);
         return followersRepo.save(followers1);
     }
 
@@ -56,7 +56,7 @@ public class FollowerServiceImp implements FollowerService {
 
     @Override
     public List<Follower> getFollowersforParticularUser(int id) throws InvalidNameFormatException {
-        List<Follower> followers = followersRepo.getfollowers(id);
+        List<Follower> followers = followersRepo.getFollowers(id);
         if (followers.isEmpty())
             throw new InvalidNameFormatException("there is no followers for followee");
         return followers;

@@ -15,33 +15,33 @@ public class UserController {
     @Autowired
     private UserService usersService;
 
-    @GetMapping("/listofusers")
+    @GetMapping("/users")
     public List<User> getAll1() throws InvalidNameFormatException {
         return usersService.getUsers();
     }
 
-    @PostMapping("/addUser")
+    @PostMapping("/user")
     public User addUser(@RequestBody User users) throws InvalidNameFormatException {
         return usersService.addUser(users);
     }
 
-    @DeleteMapping("/removeUser/{user_id}")
-    public String removeUser(@PathVariable("user_id") int user_id) throws InvalidNameFormatException {
+    @DeleteMapping("/user/{user-id}")
+    public String removeUser(@PathVariable("user-id") int user_id) throws InvalidNameFormatException {
         usersService.removeUser(user_id);
         return "deleted successfully";
     }
 
-    @PutMapping("/userid/{user_id}/username/{username}")
-    public User updateUserName(@PathVariable("user_id") int user_id, @RequestParam("username") String user_name) throws InvalidNameFormatException {
+    @PutMapping("/user-id/{user-id}/user-name/{user-name}")
+    public User updateUserName(@PathVariable("user-id") int user_id, @RequestParam("user-name") String user_name) throws InvalidNameFormatException {
         return usersService.updateUserName(user_id, user_name);
     }
 
-    @GetMapping("/ListUserPage/{offset}/limit/{limit}")
+    @GetMapping("/userPages/{offset}/limit/{limit}")
     public Page<User> getUserPage(@PathVariable("offset") int a, @PathVariable("limit") int b) throws InvalidNameFormatException {
         return usersService.getuserPage(a, b);
     }
 
-    @GetMapping("/ListUserPages/{offset}/limit/{limit}/sortby/{sortby}")
+    @GetMapping("/userPages/{offset}/limit/{limit}/sortby/{sortby}")
     public Page<User> getUsersortedPage(@PathVariable("offset") int a, @PathVariable("limit") int b, @PathVariable("sortby") String c) throws InvalidNameFormatException {
         return usersService.getuserPagebySort(a, b, c);
     }

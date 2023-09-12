@@ -13,29 +13,29 @@ public class CommentController {
     @Autowired
     private CommentService commentsService;
 
-    @GetMapping("/Listofcomment")
+    @GetMapping("/comments")
     public List<Comment> getComment() throws InvalidNameFormatException {
         return commentsService.getComments();
     }
 
-    @PostMapping("/addcomment")
+    @PostMapping("/comment")
     public Comment addcomment(@RequestBody Comment comments) {
         return commentsService.addComment(comments);
 
     }
 
-    @PutMapping("/comment/{commentid}/comment/{comment}")
-    public Comment updateComment(@PathVariable("commentid") int commentid, @PathVariable("comment") String comment) throws InvalidNameFormatException {
+    @PutMapping("/comment-id/{comment-id}/comment/{comment}")
+    public Comment updateComment(@PathVariable("comment-id") int commentid, @PathVariable("comment") String comment) throws InvalidNameFormatException {
         return commentsService.updateComment(commentid, comment);
     }
 
-    @DeleteMapping("/removeComment/{commentid}")
-    public void deletecomment(@PathVariable("commentid") int commentid) throws InvalidNameFormatException {
+    @DeleteMapping("/comment/{comment-id}")
+    public void deletecomment(@PathVariable("comment-id") int commentid) throws InvalidNameFormatException {
         commentsService.removeComment(commentid);
     }
 
-    @GetMapping("/ListCommentsforParticularPost/{postid}")
-    List<Comment> getcomments(@PathVariable("postid") int id) throws InvalidNameFormatException {
+    @GetMapping("/comments-for-particular-post/{post-id}")
+    List<Comment> getcomments(@PathVariable("post-id") int id) throws InvalidNameFormatException {
         return commentsService.getCommentsForParticularPost(id);
     }
 

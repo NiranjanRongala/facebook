@@ -26,9 +26,9 @@ public class LikeServiceImp implements LikeService {
     @Override
     public Like addLike(Like likes) {
         Like likes1 = new Like();
-        likes1.setPost_id(likes.getPost_id());
-        likes1.setUser_id(likes.getUser_id());
-        likes1.setCreated_at(likes.getCreated_at());
+        likes1.setPostid(likes.getPostid());
+        likes1.setUserid(likes.getUserid());
+        likes1.setCreatedat(likes.getCreatedat());
         return likesRepo.save(likes1);
     }
 
@@ -38,7 +38,7 @@ public class LikeServiceImp implements LikeService {
         if (likes.isEmpty())
             throw new InvalidNameFormatException("likeid is not found");
         Like likes1 = likes.get();
-        likes1.setPost_id(post_id);
+        likes1.setPostid(post_id);
         return likesRepo.save(likes1);
     }
 

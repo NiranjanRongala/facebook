@@ -8,7 +8,7 @@ import org.springframework.data.repository.query.Param;
 import java.util.List;
 
 public interface LikeRepo extends JpaRepository<Like, Integer> {
-    @Query("SELECT l FROM Like l WHERE post_id=:postid ")
+    @Query("SELECT l FROM Like l WHERE postid=:postid ")
     List<Like> getLikes(@Param("postid") int postId);
 
 }

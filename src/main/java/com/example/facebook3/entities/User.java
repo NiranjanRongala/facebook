@@ -12,11 +12,16 @@ import java.util.List;
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int user_id;
+    @Column(name = "user_id")
+    private int userid;
+    @Column(name = "username")
     private String username;
-    private String phone_number;
-    private LocalDateTime created_at;
-    private LocalDateTime updated_at;
+    @Column(name = "phone_number")
+    private String phonenumber;
+    @Column(name = "created_at")
+    private LocalDateTime createdat;
+    @Column(name = "updated_at")
+    private LocalDateTime updatedat;
 
 
     @OneToMany(mappedBy = "users")
@@ -40,12 +45,12 @@ public class User {
     @JsonIgnore // ignore the property from serialization
     private List<Like> likes = new ArrayList<Like>();
 
-    public int getUser_id() {
-        return user_id;
+    public int getUserid() {
+        return userid;
     }
 
-    public void setUser_id(int user_id) {
-        this.user_id = user_id;
+    public void setUserid(int userid) {
+        this.userid = userid;
     }
 
     public String getUsername() {
@@ -56,20 +61,28 @@ public class User {
         this.username = username;
     }
 
-    public String getPhone_number() {
-        return phone_number;
+    public String getPhonenumber() {
+        return phonenumber;
     }
 
-    public void setPhone_number(String phone_number) {
-        this.phone_number = phone_number;
+    public void setPhonenumber(String phonenumber) {
+        this.phonenumber = phonenumber;
     }
 
-    public LocalDateTime getCreated_at() {
-        return created_at;
+    public LocalDateTime getCreatedat() {
+        return createdat;
     }
 
-    public void setCreated_at(LocalDateTime created_at) {
-        this.created_at = created_at;
+    public void setCreatedat(LocalDateTime createdat) {
+        this.createdat = createdat;
+    }
+
+    public LocalDateTime getUpdatedat() {
+        return updatedat;
+    }
+
+    public void setUpdatedat(LocalDateTime updatedat) {
+        this.updatedat = updatedat;
     }
 
     public List<Follower> getFollowers() {
@@ -110,13 +123,5 @@ public class User {
 
     public void setLikes(List<Like> likes) {
         this.likes = likes;
-    }
-
-    public LocalDateTime getUpdated_at() {
-        return updated_at;
-    }
-
-    public void setUpdated_at(LocalDateTime updated_at) {
-        this.updated_at = updated_at;
     }
 }

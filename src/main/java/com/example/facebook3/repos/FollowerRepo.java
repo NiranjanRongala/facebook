@@ -9,9 +9,9 @@ import java.util.List;
 
 public interface FollowerRepo extends JpaRepository<Follower, Integer> {
 
-    @Query("DELETE FROM Follower f WHERE f.followee_id = :followee_id")
-    void deletefollower(@Param("followee_id") int user_id);
+    @Query("DELETE FROM Follower f WHERE f.followeeid = :followee_id")
+    void deleteFollower(@Param("followee_id") int user_id);
 
-    @Query("SELECT f FROM Follower f WHERE f.followee_id = :followee_id")
-    List<Follower> getfollowers(@Param("followee_id") int userid);
+    @Query("SELECT f FROM Follower f WHERE f.followeeid = :followee_id")
+    List<Follower> getFollowers(@Param("followee_id") int userid);
 }

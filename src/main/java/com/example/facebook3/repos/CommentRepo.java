@@ -8,6 +8,6 @@ import org.springframework.data.repository.query.Param;
 import java.util.List;
 
 public interface CommentRepo extends JpaRepository<Comment, Integer> {
-    @Query("SELECT c FROM Comment c WHERE c.post_id=:postId ")
+    @Query("SELECT c FROM Comment c WHERE c.postid=:postId ")
     List<Comment> getComments(@Param("postId") int postid);
 }

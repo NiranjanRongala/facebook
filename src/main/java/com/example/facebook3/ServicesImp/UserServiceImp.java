@@ -31,7 +31,7 @@ public class UserServiceImp implements UserService {
     public User addUser(User users) throws InvalidNameFormatException {
         Matcher matcher = pattern.matcher(users.getUsername());
 
-        Matcher matcher1 = pattern2.matcher(users.getPhone_number());
+        Matcher matcher1 = pattern2.matcher(users.getPhonenumber());
         User users1 = new User();
         if (matcher.matches()) {
             users1.setUsername(users.getUsername());
@@ -39,10 +39,11 @@ public class UserServiceImp implements UserService {
         } else
             throw new InvalidNameFormatException("Invalid name format");
         if (matcher1.matches())
-            users1.setPhone_number(users.getPhone_number());
+            users1.setPhonenumber(users.getPhonenumber());
         else
             throw new InvalidNameFormatException("invalid number");
-        users1.setCreated_at(users.getCreated_at());
+        users1.setCreatedat(users.getCreatedat());
+        users1.setUpdatedat(users.getUpdatedat());
 
         return usersRepo.save(users1);
     }
