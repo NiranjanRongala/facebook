@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+        http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.5.xsd">
+
+
+    <changeSet id="51" author="NK">
+        <createTable tableName="comments">
+            <column name="comment_id" type="int" autoIncrement="true" startWith="2000" incrementBy="1">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="post_id" type="int" >
+                <constraints nullable="false"/>
+            </column>
+            <column name="user_id" type="int" >
+                <constraints nullable="false"/>
+            </column>
+            <column name="comment" type="varchar(100)" >
+                <constraints nullable="false"/>
+            </column>
+            <column name="created_at" type="datetime" >
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="updated_at" type="datetime" />
+        </createTable>
+    </changeSet>
+
+    <changeSet id="52" author="nk">
+        <addForeignKeyConstraint baseTableName="comments" baseColumnNames="user_id" constraintName="fk_user_id" referencedTableName="users"
+                                 referencedColumnNames="user_id" onDelete="CASCADE"/>
+
+
+    </changeSet>
+
+    <changeSet id="53" author="nk">
+        <insert tableName="comments">
+            <column name="post_id" value="1"/>
+            <column name="user_id" value="100"/>
+            <column name="comment" value="Hi "/>
+            <column name="created_at" value="21-01-2020"/>
+            <column name="updated_at" value="21-01-2020"/>
+        </insert>
+        <insert tableName="comments">
+            <column name="post_id" value="2"/>
+            <column name="user_id" value="105"/>
+            <column name="comment" value="Happy Pongal "/>
+            <column name="created_at" value="16-01-2020"/>
+            <column name="updated_at" value="16-01-2020"/>
+        </insert>
+
+        <insert tableName="comments">
+            <column name="post_id" value="3"/>
+            <column name="user_id" value="103"/>
+            <column name="comment" value="Gud Mrng"/>
+            <column name="created_at" value="21-01-2020"/>
+            <column name="updated_at" value="21-01-2020"/>
+        </insert>
+
+        <insert tableName="comments">
+            <column name="post_id" value="4"/>
+            <column name="user_id" value="100"/>
+            <column name="comment" value="Hello"/>
+            <column name="created_at" value="28-01-2020"/>
+            <column name="updated_at" value="28-01-2020"/>
+        </insert>
+
+        <insert tableName="comments">
+            <column name="post_id" value="5"/>
+            <column name="user_id" value="104"/>
+            <column name="comment" value="Happy Republic Day"/>
+            <column name="created_at" value="26-01-2020"/>
+            <column name="updated_at" value="26-01-2020"/>
+        </insert>
+
+        <insert tableName="comments">
+            <column name="post_id" value="6"/>
+            <column name="user_id" value="100"/>
+            <column name="comment" value="Hi"/>
+            <column name="created_at" value="30-01-2020"/>
+            <column name="updated_at" value="30-01-2020"/>
+        </insert>
+
+    </changeSet>
+
+
+
+</databaseChangeLog>

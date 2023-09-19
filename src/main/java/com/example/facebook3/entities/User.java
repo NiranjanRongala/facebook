@@ -13,15 +13,20 @@ public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "user_id")
-    private int userid;
-    @Column(name = "username")
-    private String username;
+    private int userId;
+    @Column(name = "user_name")
+    private String userName;
     @Column(name = "phone_number")
-    private String phonenumber;
+    private String phoneNumber;
     @Column(name = "created_at")
-    private LocalDateTime createdat;
+    private LocalDateTime createdAt;
     @Column(name = "updated_at")
-    private LocalDateTime updatedat;
+    private LocalDateTime updatedAt;
+
+    private String password;
+
+    @Column(name = "rolename")
+    private  String role;
 
 
     @OneToMany(mappedBy = "users")
@@ -45,44 +50,60 @@ public class User {
     @JsonIgnore // ignore the property from serialization
     private List<Like> likes = new ArrayList<Like>();
 
-    public int getUserid() {
-        return userid;
+    public int getUserId() {
+        return userId;
     }
 
-    public void setUserid(int userid) {
-        this.userid = userid;
+    public void setUserId(int userId) {
+        this.userId = userId;
     }
 
-    public String getUsername() {
-        return username;
+    public String getUserName() {
+        return userName;
     }
 
-    public void setUsername(String username) {
-        this.username = username;
+    public void setUserName(String userName) {
+        this.userName = userName;
     }
 
-    public String getPhonenumber() {
-        return phonenumber;
+    public String getPhoneNumber() {
+        return phoneNumber;
     }
 
-    public void setPhonenumber(String phonenumber) {
-        this.phonenumber = phonenumber;
+    public void setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
     }
 
-    public LocalDateTime getCreatedat() {
-        return createdat;
+    public LocalDateTime getCreatedAt() {
+        return createdAt;
     }
 
-    public void setCreatedat(LocalDateTime createdat) {
-        this.createdat = createdat;
+    public void setCreatedAt(LocalDateTime createdAt) {
+        this.createdAt = createdAt;
     }
 
-    public LocalDateTime getUpdatedat() {
-        return updatedat;
+    public LocalDateTime getUpdatedAt() {
+        return updatedAt;
     }
 
-    public void setUpdatedat(LocalDateTime updatedat) {
-        this.updatedat = updatedat;
+    public void setUpdatedAt(LocalDateTime updatedAt) {
+        this.updatedAt = updatedAt;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public String getRole() {
+        return role;
+    }
+
+    public void setRole(String role) {
+        this.role = role;
     }
 
     public List<Follower> getFollowers() {

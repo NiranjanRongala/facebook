@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+        http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.5.xsd">
+
+
+    <changeSet id="11" author="NK">
+        <createTable tableName="followers">
+            <column name="s_no" type="int" autoIncrement="true" startWith="50" incrementBy="1">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="followee_id" type="int" >
+                <constraints nullable="false"/>
+            </column>
+            <column name="follower_id" type="int" >
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="created_at" type="datetime" >
+                <constraints nullable="false"/>
+            </column>
+            <column name="updated_at" type="datetime" />
+        </createTable>
+    </changeSet>
+
+    <changeSet id="12" author="nk">
+        <addForeignKeyConstraint baseTableName="followers" baseColumnNames="followee_id" constraintName="fk_er_id" referencedTableName="users"
+                                 referencedColumnNames="user_id" onDelete="CASCADE"/>
+
+        <addForeignKeyConstraint baseTableName="followers" baseColumnNames="follower_id" constraintName="fk_usmmr_id" referencedTableName="users"
+                                 referencedColumnNames="user_id" onDelete="NO ACTION"/>
+
+    </changeSet>
+
+    <changeSet id="113" author="nk">
+        <insert tableName="followers">
+            <column name="followee_id" value="100"/>
+            <column name="follower_id" value="101"/>
+            <column name="created_at" value="02-01-2020"/>
+            <column name="updated_at" value="02-01-2020"/>
+        </insert>
+
+
+        <insert tableName="followers">
+            <column name="followee_id" value="100"/>
+            <column name="follower_id" value="103"/>
+            <column name="created_at" value="04-01-2020"/>
+            <column name="updated_at" value="04-01-2020"/>
+        </insert>
+        <insert tableName="followers">
+            <column name="followee_id" value="100"/>
+            <column name="follower_id" value="104"/>
+            <column name="created_at" value="06-01-2020"/>
+            <column name="updated_at" value="06-01-2020"/>
+        </insert>
+
+        <insert tableName="followers">
+            <column name="followee_id" value="101"/>
+            <column name="follower_id" value="100"/>
+            <column name="created_at" value="06-01-2020"/>
+            <column name="updated_at" value="06-01-2020"/>
+        </insert>
+        <insert tableName="followers">
+            <column name="followee_id" value="101"/>
+            <column name="follower_id" value="105"/>
+            <column name="created_at" value="07-01-2020"/>
+            <column name="updated_at" value="07-01-2020"/>
+        </insert>
+        <insert tableName="followers">
+            <column name="followee_id" value="101"/>
+            <column name="follower_id" value="102"/>
+            <column name="created_at" value="08-01-2020"/>
+            <column name="updated_at" value="08-01-2020"/>
+        </insert>
+
+    </changeSet>
+
+
+
+
+</databaseChangeLog>

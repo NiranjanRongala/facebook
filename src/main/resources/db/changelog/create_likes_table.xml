@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+        http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.5.xsd">
+
+
+    <changeSet id="41" author="NK">
+        <createTable tableName="likes">
+            <column name="like_id" type="int" autoIncrement="true" startWith="5000" incrementBy="1">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="post_id" type="int" >
+                <constraints nullable="false"/>
+            </column>
+            <column name="user_id" type="int" >
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="created_at" type="datetime" >
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="updated_at" type="datetime" />
+        </createTable>
+    </changeSet>
+
+    <changeSet id="42" author="nk">
+        <addForeignKeyConstraint baseTableName="likes" baseColumnNames="user_id" constraintName="fk_uppser_id" referencedTableName="users"
+                                 referencedColumnNames="user_id" onDelete="CASCADE"/>
+
+
+    </changeSet>
+
+    <changeSet id="43" author="nk">
+        <insert tableName="likes">
+            <column name="post_id" value="1"/>
+            <column name="user_id" value="102"/>
+            <column name="created_at" value="20-1-2020"/>
+            <column name="updated_at" value="20-1-2020"/>
+        </insert>
+        <insert tableName="likes">
+            <column name="post_id" value="2"/>
+            <column name="user_id" value="100"/>
+            <column name="created_at" value="20-1-2020"/>
+            <column name="updated_at" value="20-1-2020"/>
+        </insert>
+        <insert tableName="likes">
+            <column name="post_id" value="3"/>
+            <column name="user_id" value="101"/>
+            <column name="created_at" value="28-1-2020"/>
+            <column name="updated_at" value="28-1-2020"/>
+        </insert>
+        <insert tableName="likes">
+            <column name="post_id" value="4"/>
+            <column name="user_id" value="104"/>
+            <column name="created_at" value="29-1-2020"/>
+            <column name="updated_at" value="29-1-2020"/>
+        </insert>
+        <insert tableName="likes">
+            <column name="post_id" value="5"/>
+            <column name="user_id" value="100"/>
+            <column name="created_at" value="29-1-2020"/>
+            <column name="updated_at" value="29-1-2020"/>
+        </insert>
+        <insert tableName="likes">
+            <column name="post_id" value="6"/>
+            <column name="user_id" value="100"/>
+            <column name="created_at" value="30-1-2020"/>
+            <column name="updated_at" value="30-1-2020"/>
+        </insert>
+
+    </changeSet>
+
+
+
+
+</databaseChangeLog>

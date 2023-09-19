@@ -11,58 +11,58 @@ public class Like {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "like_id")
-    private int likeid;
+    private int likeId;
     @Column(name = "post_id")
-    private int postid;
+    private int postId;
     @Column(name = "user_id")
-    private int userid;
+    private int userId;
     @Column(name = "updated_at")
-    private LocalDateTime updatedat;
+    private LocalDateTime updatedAt;
     @Column(name = "created_at")
-    private LocalDateTime createdat;
+    private LocalDateTime createdAt;
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id", updatable = false, insertable = false)
     @JsonIgnore
     private User users;
 
-    public int getLikeid() {
-        return likeid;
+    public int getLikeId() {
+        return likeId;
     }
 
-    public void setLikeid(int likeid) {
-        this.likeid = likeid;
+    public void setLikeId(int likeId) {
+        this.likeId = likeId;
     }
 
-    public int getPostid() {
-        return postid;
+    public int getPostId() {
+        return postId;
     }
 
-    public void setPostid(int postid) {
-        this.postid = postid;
+    public void setPostId(int postId) {
+        this.postId = postId;
     }
 
-    public int getUserid() {
-        return userid;
+    public int getUserId() {
+        return userId;
     }
 
-    public void setUserid(int userid) {
-        this.userid = userid;
+    public void setUserId(int userId) {
+        this.userId = userId;
     }
 
-    public LocalDateTime getUpdatedat() {
-        return updatedat;
+    public LocalDateTime getUpdatedAt() {
+        return updatedAt;
     }
 
-    public void setUpdatedat(LocalDateTime updatedat) {
-        this.updatedat = updatedat;
+    public void setUpdatedAt(LocalDateTime updatedAt) {
+        this.updatedAt = updatedAt;
     }
 
-    public LocalDateTime getCreatedat() {
-        return createdat;
+    public LocalDateTime getCreatedAt() {
+        return createdAt;
     }
 
-    public void setCreatedat(LocalDateTime createdat) {
-        this.createdat = createdat;
+    public void setCreatedAt(LocalDateTime createdAt) {
+        this.createdAt = createdAt;
     }
 
     public User getUsers() {

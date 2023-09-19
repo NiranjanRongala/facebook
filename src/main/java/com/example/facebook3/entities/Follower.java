@@ -11,15 +11,15 @@ public class Follower {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "s_no")
-    private int sno;
+    private int sNo;
     @Column(name = "followee_id")
-    private int followeeid;
+    private int followeeId;
     @Column(name = "follower_id")
-    private int followerid;
+    private int followerId;
     @Column(name = "created_at")
-    private LocalDateTime createdat;
+    private LocalDateTime createdAt;
     @Column(name = "updated_at")
-    private LocalDateTime updatedat;
+    private LocalDateTime updatedAt;
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "followee_id", updatable = false, insertable = false)
     @JsonIgnore
@@ -29,44 +29,44 @@ public class Follower {
     @JsonIgnore
     private User users1;
 
-    public int getSno() {
-        return sno;
+    public int getsNo() {
+        return sNo;
     }
 
-    public void setSno(int sno) {
-        this.sno = sno;
+    public void setsNo(int sNo) {
+        this.sNo = sNo;
     }
 
-    public int getFolloweeid() {
-        return followeeid;
+    public int getFolloweeId() {
+        return followeeId;
     }
 
-    public void setFolloweeid(int followeeid) {
-        this.followeeid = followeeid;
+    public void setFolloweeId(int followeeId) {
+        this.followeeId = followeeId;
     }
 
-    public int getFollowerid() {
-        return followerid;
+    public int getFollowerId() {
+        return followerId;
     }
 
-    public void setFollowerid(int followerid) {
-        this.followerid = followerid;
+    public void setFollowerId(int followerId) {
+        this.followerId = followerId;
     }
 
-    public LocalDateTime getCreatedat() {
-        return createdat;
+    public LocalDateTime getCreatedAt() {
+        return createdAt;
     }
 
-    public void setCreatedat(LocalDateTime createdat) {
-        this.createdat = createdat;
+    public void setCreatedAt(LocalDateTime createdAt) {
+        this.createdAt = createdAt;
     }
 
-    public LocalDateTime getUpdatedat() {
-        return updatedat;
+    public LocalDateTime getUpdatedAt() {
+        return updatedAt;
     }
 
-    public void setUpdatedat(LocalDateTime updatedat) {
-        this.updatedat = updatedat;
+    public void setUpdatedAt(LocalDateTime updatedAt) {
+        this.updatedAt = updatedAt;
     }
 
     public User getUsers() {

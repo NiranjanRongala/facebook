@@ -30,13 +30,14 @@ public class PostServiceImp implements PostService {
     @Override
     public Post addPost(Post posts) throws InvalidNameFormatException {
 
-        User user = usersRepo.findById(posts.getUserid()).orElseThrow(() -> new InvalidNameFormatException("id is not found"));
+        User user = usersRepo.findById(posts.getUserId()).orElseThrow(() -> new InvalidNameFormatException("id is not found"));
 
         Post posts1 = new Post();
 
-        posts1.setUserid(posts.getUserid());
+        posts1.setUserId(posts.getUserId());
         posts1.setPost(posts.getPost());
-        posts1.setCreatedat(posts.getCreatedat());
+        posts1.setCreatedAt(posts.getCreatedAt());
+        posts1.setUpdatedAt(posts.getUpdatedAt());
 
         return postsRepo.save(posts1);
     }

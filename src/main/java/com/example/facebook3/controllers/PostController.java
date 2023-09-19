@@ -4,6 +4,7 @@ import com.example.facebook3.Services.PostService;
 import com.example.facebook3.entities.Post;
 import com.example.facebook3.exceptions.InvalidNameFormatException;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -19,11 +20,13 @@ public class PostController {
     }
 
     @PostMapping("/post")
+    @PreAuthorize("hasAuthority('ROLE_USER') || hasAuthority('ROLE_ADMIN')")
     public Post addPost(@RequestBody Post posts) throws InvalidNameFormatException {
         return postsService.addPost(posts);
     }
 
     @PutMapping("/post-id/{post-id}/post/{post}")
+    @PreAuthorize("hasAuthority('ROLE_USER') || hasAuthority('ROLE_ADMIN')")
     public Post updatePost(@PathVariable("post-id") int post_id, @PathVariable("post") String post) throws InvalidNameFormatException {
 
         return postsService.updatePost(post_id, post);
@@ -31,6 +34,7 @@ public class PostController {
     }
 
     @DeleteMapping("/post/{post-id}")
+    @PreAuthorize("hasAuthority('ROLE_USER') || hasAuthority('ROLE_ADMIN')")
     public void removePost(@PathVariable("post-id") int post_id) throws InvalidNameFormatException {
         postsService.removePost(post_id);
     }

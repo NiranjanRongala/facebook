@@ -5,21 +5,23 @@
 
 
     <include
-            file="classpath:db/changelog/Create_Users_Table.xml"
+            file="classpath:db/changelog/db.changelog-create_users_table.xml"
             relativeToChangelogFile="false" />
 
     <include
-            file="classpath:db/changelog/Create_Followers_Table.xml"
-            relativeToChangelogFile="false" />
-    <include
-            file="classpath:db/changelog/Create_Posts_Table.xml"
-            relativeToChangelogFile="false" />
-    <include
-            file="classpath:db/changelog/Create_Comments_Table.xml"
-            relativeToChangelogFile="false" />
-    <include
-            file="classpath:db/changelog/Create_Likes_Table.xml"
+            file="classpath:db/changelog/db.changelog-create_followers_table.xml"
             relativeToChangelogFile="false" />
 
-
+    <include
+            file="classpath:db/changelog/create_posts_table.xml"
+            relativeToChangelogFile="false" />
+    <include
+            file="classpath:db/changelog/create_comments_table.xml"
+            relativeToChangelogFile="false" />
+    <include
+            file="classpath:db/changelog/create_likes_table.xml"
+            relativeToChangelogFile="false" />
+<!--    <include-->
+<!--            file="classpath:db/changelog/create_roles_table.xml"/>-->
+<!--            relativeToChangelogFile="false" />-->
 </databaseChangeLog>

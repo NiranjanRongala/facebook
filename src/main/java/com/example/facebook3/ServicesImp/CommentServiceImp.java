@@ -27,10 +27,11 @@ public class CommentServiceImp implements CommentService {
     @Override
     public Comment addComment(Comment comments) {
         Comment comments1 = new Comment();
-        comments1.setPostid(comments.getPostid());
-        comments1.setUserid(comments.getUserid());
+        comments1.setPostId(comments.getPostId());
+        comments1.setUserId(comments.getUserId());
         comments1.setComment(comments.getComment());
-        comments1.setCreatedat(comments.getCreatedat());
+        comments1.setCreatedAt(comments.getCreatedAt());
+        comments1.setUpdatedAt(comments.getUpdatedAt());
         return commentsRepo.save(comments1);
     }
 

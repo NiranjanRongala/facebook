@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+        http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.5.xsd">
+
+
+    <changeSet id="31" author="NK">
+        <createTable tableName="posts">
+            <column name="post_id" type="int" autoIncrement="true" startWith="1" incrementBy="1">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="user_id" type="int" >
+                <constraints nullable="false"/>
+            </column>
+            <column name="post" type="varchar(100)" >
+                <constraints nullable="false"/>
+            </column>
+            <column name="created_at" type="datetime" >
+                <constraints nullable="false"/>
+            </column>
+            <column name="updated_at" type="datetime" />
+        </createTable>
+    </changeSet>
+
+    <changeSet id="32" author="nk">
+        <addForeignKeyConstraint baseTableName="posts" baseColumnNames="user_id" constraintName="fk_kkuser_id" referencedTableName="users"
+                                 referencedColumnNames="user_id" onDelete="CASCADE"/>
+
+
+    </changeSet>
+
+    <changeSet id="33" author="nk">
+        <insert tableName="posts">
+            <column name="user_id" value="100"/>
+            <column name="post" value="Hi Friends"/>
+            <column name="created_at" value="10-01-2020"/>
+            <column name="updated_at" value="10-01-2020"/>
+        </insert>
+        <insert tableName="posts">
+            <column name="user_id" value="103"/>
+            <column name="post" value="Happy Pongal"/>
+            <column name="created_at" value="15-01-2020"/>
+            <column name="updated_at" value="15-01-2020"/>
+        </insert>
+
+        <insert tableName="posts">
+            <column name="user_id" value="100"/>
+            <column name="post" value="Good Morning"/>
+            <column name="created_at" value="15-01-2020"/>
+            <column name="updated_at" value="15-01-2020"/>
+        </insert>
+
+        <insert tableName="posts">
+            <column name="user_id" value="101"/>
+            <column name="post" value="Hello Vizag"/>
+            <column name="created_at" value="16-01-2020"/>
+            <column name="updated_at" value="16-01-2020"/>
+        </insert>
+
+        <insert tableName="posts">
+            <column name="user_id" value="103"/>
+            <column name="post" value="Happy Republic Day"/>
+            <column name="created_at" value="26-01-2020"/>
+            <column name="updated_at" value="26-01-2020"/>
+        </insert>
+
+        <insert tableName="posts">
+            <column name="user_id" value="104"/>
+            <column name="post" value="Hi Everyone"/>
+            <column name="created_at" value="28-01-2020"/>
+            <column name="updated_at" value="28-01-2020"/>
+        </insert>
+
+    </changeSet>
+
+
+
+</databaseChangeLog>
