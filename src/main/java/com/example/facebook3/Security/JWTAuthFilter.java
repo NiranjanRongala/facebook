@@ -1,6 +1,7 @@
 package com.example.facebook3.Security;
 
 import com.example.facebook3.ServicesImp.JwtService;
+import com.example.facebook3.ServicesImp.UserDetailService;
 import com.example.facebook3.ServicesImp.UserServiceImp;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
@@ -19,7 +20,9 @@ import java.io.IOException;
 @Component
 public class JWTAuthFilter extends OncePerRequestFilter {
     @Autowired
-    UserServiceImp personService;
+    UserDetailService personService;
+
+
     @Autowired
     private JwtService jwtService;
 

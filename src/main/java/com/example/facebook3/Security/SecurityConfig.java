@@ -1,5 +1,6 @@
 package com.example.facebook3.Security;
 
+import com.example.facebook3.ServicesImp.UserDetailService;
 import com.example.facebook3.ServicesImp.UserServiceImp;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
@@ -31,7 +32,7 @@ public class SecurityConfig {
 
     @Bean
     public UserDetailsService userDetailsService() {
-        return new UserServiceImp();
+        return new UserDetailService();
     }
 
     @Bean

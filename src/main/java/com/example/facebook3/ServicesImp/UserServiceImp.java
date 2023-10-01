@@ -1,6 +1,7 @@
 package com.example.facebook3.ServicesImp;
 
 
+import com.example.facebook3.Services.UserService;
 import com.example.facebook3.entities.User;
 import com.example.facebook3.entities.UsersDetails;
 import com.example.facebook3.exceptions.InvalidNameFormatException;
@@ -23,7 +24,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 @Service
-public class UserServiceImp implements UserDetailsService {
+public class UserServiceImp implements UserService {
 
     @Autowired
     private UserRepo usersRepo;
@@ -33,16 +34,17 @@ public class UserServiceImp implements UserDetailsService {
     private PasswordEncoder encoder;
 
 
-    @Override
-    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        Optional<User> person = usersRepo.findByUserName(username);
-        return person.map(UsersDetails::new).orElseThrow(() -> new RuntimeException("Invalid username"));
-    }
+//    @Override
+//    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+//        Optional<User> person = usersRepo.findByUserName(username);
+//        return person.map(UsersDetails::new).orElseThrow(() -> new RuntimeException("Invalid username"));
+//    }
 
     Pattern pattern2 = Pattern.compile("[6-9][0-9]{9}");
     Pattern pattern = Pattern.compile("[A-Z][a-z]*");
 
 
+    @Override
     public User addUser(User users) throws InvalidNameFormatException {
         Matcher matcher = pattern.matcher(users.getUserName());
 
@@ -65,7 +67,7 @@ public class UserServiceImp implements UserDetailsService {
         return usersRepo.save(users1);
     }
 
-
+    @Override
     public void removeUser(int user_id) throws InvalidNameFormatException {
         Optional<User> v = usersRepo.findById(user_id);
         if (v.isEmpty())
@@ -77,6 +79,7 @@ public class UserServiceImp implements UserDetailsService {
     }
 
 
+    @Override
     public User updateUserName(int user_id, String user_name) throws InvalidNameFormatException {
         Optional<User> v = usersRepo.findById(user_id);
         if (v.isEmpty())
@@ -88,6 +91,7 @@ public class UserServiceImp implements UserDetailsService {
     }
 
 
+    @Override
     public List<User> getUsers() throws InvalidNameFormatException {
         List<User> users = usersRepo.findAll();
 
@@ -98,17 +102,20 @@ public class UserServiceImp implements UserDetailsService {
     }
 
 
+    @Override
     public Page<User> getUserPage(int offset, int limit) {
 
         return usersRepo.findAll(PageRequest.of(offset, limit));
 
     }
 
+    @Override
     public Page<User> getUserPageBySort(int offset, int limit, String sortby) {
         return usersRepo.findAll(PageRequest.of(offset, limit, Sort.by(sortby).descending()));
     }
 
 
+    @Override
     public User updateUserPassword(int user_id, String password) throws InvalidNameFormatException {
         Optional<User> v = usersRepo.findById(user_id);
         if (v.isEmpty())
@@ -119,6 +126,7 @@ public class UserServiceImp implements UserDetailsService {
     }
 
 
+    @Override
     public User updateRole(int user_id, String role) throws InvalidNameFormatException {
         Optional<User> v = usersRepo.findById(user_id);
         if (v.isEmpty())
