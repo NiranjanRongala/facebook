@@ -26,18 +26,18 @@ public class LikeController {
 
     @PutMapping("/like-id/{like-id}/post-id/{post-id}")
     @PreAuthorize("hasAuthority('ROLE_USER') || hasAuthority('ROLE_ADMIN')")
-    public Like updatelike(@PathVariable("like-id") int likeid, @PathVariable("post-id") int postid) throws InvalidNameFormatException {
+    public Like updateLike(@PathVariable("like-id") int likeid, @PathVariable("post-id") int postid) throws InvalidNameFormatException {
         return likesService.updateLike(likeid, postid);
     }
 
     @DeleteMapping("/like/{like-id}")
     @PreAuthorize("hasAuthority('ROLE_USER') || hasAuthority('ROLE_ADMIN')")
-    public void deletelike(@PathVariable("like-id") int likeid) throws InvalidNameFormatException {
-        likesService.removelike(likeid);
+    public void deleteLike(@PathVariable("like-id") int likeid) throws InvalidNameFormatException {
+        likesService.removeLike(likeid);
     }
 
     @GetMapping("likes-for-particular-post/{post-id}")
-    public List<Like> getLikesforsinglePost(@PathVariable("post-id") int postId) throws InvalidNameFormatException {
+    public List<Like> getLikesForSinglePost(@PathVariable("post-id") int postId) throws InvalidNameFormatException {
         return likesService.getLikesForParticularPost(postId);
 
     }

@@ -14,7 +14,7 @@ public interface FollowerService {
 
     void removeFollower(int s_no) throws InvalidNameFormatException;
 
-    List<Follower> getFollowersforParticularUser(int id) throws InvalidNameFormatException;
+    List<Follower> getFollowersForParticularUser(int id) throws InvalidNameFormatException;
 
 
 }

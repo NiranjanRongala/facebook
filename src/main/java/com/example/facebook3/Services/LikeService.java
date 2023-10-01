@@ -12,7 +12,7 @@ public interface LikeService {
 
     Like updateLike(int like_id, int post_id) throws InvalidNameFormatException;
 
-    void removelike(int like_id) throws InvalidNameFormatException;
+    void removeLike(int like_id) throws InvalidNameFormatException;
 
     List<Like> getLikesForParticularPost(int postid) throws InvalidNameFormatException;
 

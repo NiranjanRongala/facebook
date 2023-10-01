@@ -16,6 +16,7 @@ public class FollowerController {
     private FollowerService followersService;
 
     @GetMapping("/followers")
+    @PreAuthorize("hasAuthority('ROLE_ADMIN')")
     public List<Follower> getUsers() throws InvalidNameFormatException {
         return followersService.getFollowers();
 
@@ -40,8 +41,8 @@ public class FollowerController {
     }
 
     @GetMapping("/followers-for-particular-followee/{followee-id}")
-    public List<Follower> get(@PathVariable("followee-id") int userid) throws InvalidNameFormatException {
-        return followersService.getFollowersforParticularUser(userid);
+    public List<Follower> getFollowers(@PathVariable("followee-id") int userid) throws InvalidNameFormatException {
+        return followersService.getFollowersForParticularUser(userid);
     }
 
 

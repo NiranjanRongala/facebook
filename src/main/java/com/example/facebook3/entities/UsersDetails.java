@@ -15,10 +15,10 @@ public class UsersDetails implements UserDetails {
     private String password;
     private List<GrantedAuthority> authorities;
 
-    public UsersDetails(User user){
-        password= user.getPassword();
-        username= user.getUserName();
-        authorities=Arrays
+    public UsersDetails(User user) {
+        password = user.getPassword();
+        username = user.getUserName();
+        authorities = Arrays
                 .stream(user.getRole().split(","))
                 .map(SimpleGrantedAuthority::new)
                 .collect(Collectors.toList());

@@ -34,12 +34,12 @@ public class CommentController {
 
     @DeleteMapping("/comment/{comment-id}")
     @PreAuthorize("hasAuthority('ROLE_USER') || hasAuthority('ROLE_ADMIN')")
-    public void deletecomment(@PathVariable("comment-id") int commentid) throws InvalidNameFormatException {
+    public void deleteComment(@PathVariable("comment-id") int commentid) throws InvalidNameFormatException {
         commentsService.removeComment(commentid);
     }
 
     @GetMapping("/comments-for-particular-post/{post-id}")
-    List<Comment> getcomments(@PathVariable("post-id") int id) throws InvalidNameFormatException {
+    List<Comment> getComments(@PathVariable("post-id") int id) throws InvalidNameFormatException {
         return commentsService.getCommentsForParticularPost(id);
     }
 

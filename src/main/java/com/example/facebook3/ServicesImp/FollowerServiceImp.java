@@ -56,7 +56,7 @@ public class FollowerServiceImp implements FollowerService {
     }
 
     @Override
-    public List<Follower> getFollowersforParticularUser(int id) throws InvalidNameFormatException {
+    public List<Follower> getFollowersForParticularUser(int id) throws InvalidNameFormatException {
         List<Follower> followers = followersRepo.getFollowers(id);
         if (followers.isEmpty())
             throw new InvalidNameFormatException("there is no followers for followee");

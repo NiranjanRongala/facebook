@@ -22,8 +22,7 @@ public class PostServiceImp implements PostService {
 
     @Override
     public List<Post> getPosts() throws InvalidNameFormatException {
-        if (postsRepo.findAll().isEmpty())
-            throw new InvalidNameFormatException(" there is no data ");
+        if (postsRepo.findAll().isEmpty()) throw new InvalidNameFormatException(" there is no data ");
         return postsRepo.findAll();
     }
 
@@ -45,8 +44,7 @@ public class PostServiceImp implements PostService {
     @Override
     public Post updatePost(int post_id, String post) throws InvalidNameFormatException {
         Optional<Post> post1 = postsRepo.findById(post_id);
-        if (post1.isEmpty())
-            throw new InvalidNameFormatException("postid is not found");
+        if (post1.isEmpty()) throw new InvalidNameFormatException("postid is not found");
         Post posts = post1.get();
         posts.setPost(post);
         return postsRepo.save(posts);
@@ -56,8 +54,7 @@ public class PostServiceImp implements PostService {
     @Override
     public void removePost(int post_id) throws InvalidNameFormatException {
         Optional<Post> post1 = postsRepo.findById(post_id);
-        if (post1.isEmpty())
-            throw new InvalidNameFormatException("there is no post related to that post_id");
+        if (post1.isEmpty()) throw new InvalidNameFormatException("there is no post related to that post_id");
 
         postsRepo.deleteById(post_id);
 
@@ -67,16 +64,14 @@ public class PostServiceImp implements PostService {
     @Override
     public List<Post> getPostParticularUser(int userId) throws InvalidNameFormatException {
         List<Post> posts = postsRepo.getPosts(userId);
-        if (posts.isEmpty())
-            throw new InvalidNameFormatException("there is no posts for that user");
+        if (posts.isEmpty()) throw new InvalidNameFormatException("there is no posts for that user");
         return posts;
     }
 
     @Override
-    public List<String> getfeed(int userid) throws InvalidNameFormatException {
+    public List<String> getFeed(int userid) throws InvalidNameFormatException {
         List<String> a = postsRepo.getFeeds(userid);
-        if (a.isEmpty())
-            throw new InvalidNameFormatException("there is no posts to feed");
+        if (a.isEmpty()) throw new InvalidNameFormatException("there is no posts to feed");
 
         return a;
     }

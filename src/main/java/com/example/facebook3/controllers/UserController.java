@@ -1,11 +1,17 @@
 package com.example.facebook3.controllers;
 
+import com.example.facebook3.ServicesImp.JwtService;
 import com.example.facebook3.ServicesImp.UserServiceImp;
+import com.example.facebook3.entities.AuthRequest;
 import com.example.facebook3.entities.User;
 import com.example.facebook3.exceptions.InvalidNameFormatException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -15,11 +21,36 @@ import java.util.List;
 public class UserController {
 
     @Autowired
+
+    private JwtService jwtService;
+    @Autowired
     private UserServiceImp usersService;
+    @Autowired
+    private AuthenticationManager authenticationManager;
+//
+//    @GetMapping("/test1")
+//    public String test1(){
+//        return "Hello Everyone...";
+//    }
+//
+//    @GetMapping("/test2")
+//    @PreAuthorize("hasRole('ROLE_ADMIN')")
+//    public String test2(){
+//        return "How are you...";
+//    }
+
+    @PostMapping("/authenticate")
+    public String generateToken(@RequestBody AuthRequest authRequest) throws UsernameNotFoundException {
+        Authentication authentication =authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(authRequest.getUsername(),authRequest.getPassword()));
+        if(authentication.isAuthenticated())
+            return jwtService.generateToken(authRequest.getUsername());
+        else
+            throw new UsernameNotFoundException("Invalid username");
+    }
 
     @GetMapping("/users")
     @PreAuthorize("hasAuthority('ROLE_USER') || hasAuthority('ROLE_ADMIN')")
-    public List<User> getAll1() throws InvalidNameFormatException {
+    public List<User> getUsers() throws InvalidNameFormatException {
         return usersService.getUsers();
     }
 
@@ -43,12 +74,12 @@ public class UserController {
 
     @GetMapping("/userPages/{offset}/limit/{limit}")
     public Page<User> getUserPage(@PathVariable("offset") int a, @PathVariable("limit") int b) throws InvalidNameFormatException {
-        return usersService.getuserPage(a, b);
+        return usersService.getUserPage(a, b);
     }
 
     @GetMapping("/userPages/{offset}/limit/{limit}/sortby/{sortby}")
-    public Page<User> getUsersortedPage(@PathVariable("offset") int a, @PathVariable("limit") int b, @PathVariable("sortby") String c) throws InvalidNameFormatException {
-        return usersService.getuserPagebySort(a, b, c);
+    public Page<User> getUserSortedPage(@PathVariable("offset") int a, @PathVariable("limit") int b, @PathVariable("sortby") String c) throws InvalidNameFormatException {
+        return usersService.getUserPageBySort(a, b, c);
     }
 
 

@@ -35,8 +35,8 @@ public class UserServiceImp implements UserDetailsService {
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        Optional<User> person=usersRepo.findByUserName(username);
-        return person.map(UsersDetails::new).orElseThrow(()->new RuntimeException("Invalid username"));
+        Optional<User> person = usersRepo.findByUserName(username);
+        return person.map(UsersDetails::new).orElseThrow(() -> new RuntimeException("Invalid username"));
     }
 
     Pattern pattern2 = Pattern.compile("[6-9][0-9]{9}");
@@ -88,7 +88,6 @@ public class UserServiceImp implements UserDetailsService {
     }
 
 
-
     public List<User> getUsers() throws InvalidNameFormatException {
         List<User> users = usersRepo.findAll();
 
@@ -99,13 +98,13 @@ public class UserServiceImp implements UserDetailsService {
     }
 
 
-    public Page<User> getuserPage(int offset, int limit) {
+    public Page<User> getUserPage(int offset, int limit) {
 
         return usersRepo.findAll(PageRequest.of(offset, limit));
 
     }
 
-    public Page<User> getuserPagebySort(int offset, int limit, String sortby) {
+    public Page<User> getUserPageBySort(int offset, int limit, String sortby) {
         return usersRepo.findAll(PageRequest.of(offset, limit, Sort.by(sortby).descending()));
     }
 

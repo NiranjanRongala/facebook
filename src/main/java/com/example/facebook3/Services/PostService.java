@@ -16,6 +16,6 @@ public interface PostService {
 
     List<Post> getPostParticularUser(int userId) throws InvalidNameFormatException;
 
-    //  List<String> getfeed() throws InvalidNameFormatException;
-    List<String> getfeed(int userid) throws InvalidNameFormatException;
+
+    List<String> getFeed(int userid) throws InvalidNameFormatException;
 }

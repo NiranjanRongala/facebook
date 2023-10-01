@@ -18,8 +18,7 @@ public class CommentServiceImp implements CommentService {
     @Override
     public List<Comment> getComments() throws InvalidNameFormatException {
         List<Comment> comments = commentsRepo.findAll();
-        if (comments.isEmpty())
-            throw new InvalidNameFormatException("no comments  ");
+        if (comments.isEmpty()) throw new InvalidNameFormatException("no comments  ");
 
         return commentsRepo.findAll();
     }
@@ -38,8 +37,7 @@ public class CommentServiceImp implements CommentService {
     @Override
     public Comment updateComment(int comment_id, String comment) throws InvalidNameFormatException {
         Optional<Comment> comments = commentsRepo.findById(comment_id);
-        if (comments.isEmpty())
-            throw new InvalidNameFormatException("commentid is not found");
+        if (comments.isEmpty()) throw new InvalidNameFormatException("commentid is not found");
         Comment comments1 = comments.get();
         comments1.setComment(comment);
         return commentsRepo.save(comments1);
@@ -48,8 +46,7 @@ public class CommentServiceImp implements CommentService {
     @Override
     public void removeComment(int comment_id) throws InvalidNameFormatException {
         Optional<Comment> comments = commentsRepo.findById(comment_id);
-        if (comments.isEmpty())
-            throw new InvalidNameFormatException("commentid is not found");
+        if (comments.isEmpty()) throw new InvalidNameFormatException("commentid is not found");
         commentsRepo.deleteById(comment_id);
 
     }
@@ -57,8 +54,7 @@ public class CommentServiceImp implements CommentService {
     @Override
     public List<Comment> getCommentsForParticularPost(int postid) throws InvalidNameFormatException {
         List<Comment> comments = commentsRepo.getComments(postid);
-        if (comments.isEmpty())
-            throw new InvalidNameFormatException("no comments for this post");
+        if (comments.isEmpty()) throw new InvalidNameFormatException("no comments for this post");
         return comments;
     }
 }

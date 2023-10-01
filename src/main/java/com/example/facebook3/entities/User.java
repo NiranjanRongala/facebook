@@ -26,7 +26,7 @@ public class User {
     private String password;
 
     @Column(name = "rolename")
-    private  String role;
+    private String role;
 
 
     @OneToMany(mappedBy = "users")

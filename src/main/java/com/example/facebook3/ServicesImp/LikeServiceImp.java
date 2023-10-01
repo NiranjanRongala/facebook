@@ -44,7 +44,7 @@ public class LikeServiceImp implements LikeService {
     }
 
     @Override
-    public void removelike(int like_id) throws InvalidNameFormatException {
+    public void removeLike(int like_id) throws InvalidNameFormatException {
         Optional<Like> likes = likesRepo.findById(like_id);
         if (likes.isEmpty())
             throw new InvalidNameFormatException("likeid is not found");

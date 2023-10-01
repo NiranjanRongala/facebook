@@ -40,12 +40,12 @@ public class PostController {
     }
 
     @GetMapping("/posts-for-particular-user/{user-id}")
-    public List<Post> getpostsforparticularuser(@PathVariable("user-id") int userid) throws InvalidNameFormatException {
+    public List<Post> getPostsForParticularUser(@PathVariable("user-id") int userid) throws InvalidNameFormatException {
         return postsService.getPostParticularUser(userid);
     }
 
     @GetMapping("/feed/{followee-id}")
-    public List<String> getfeed(@PathVariable("followee-id") int id) throws InvalidNameFormatException {
-        return postsService.getfeed(id);
+    public List<String> getFeed(@PathVariable("followee-id") int id) throws InvalidNameFormatException {
+        return postsService.getFeed(id);
     }
 }

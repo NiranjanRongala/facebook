@@ -19,13 +19,13 @@
 //
 //    List<User> getUsers() throws InvalidNameFormatException;
 //
-//    Page<User> getuserPage(int offset, int limit);
+//    Page<User> getUserPage(int offset, int limit);
 //
-//    Page<User> getuserPagebySort(int offset, int limit, String sortby);
+//    Page<User> getUserPageBySort(int offset, int limit, String sortby);
+//
 //    User updateUserPassword(int user_id, String password) throws InvalidNameFormatException;
 //
 //    User updateRole(int user_id, String role) throws InvalidNameFormatException;
-//
 //
 //
 //}
