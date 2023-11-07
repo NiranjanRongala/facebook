@@ -1,11 +1,6 @@
 package demo.example.demo.security;
 
 
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.List;
-import java.util.Map;
-
 import org.springframework.core.convert.converter.Converter;
 import org.springframework.security.authentication.AbstractAuthenticationToken;
 import org.springframework.security.core.GrantedAuthority;
@@ -14,8 +9,9 @@ import org.springframework.security.oauth2.jwt.Jwt;
 import org.springframework.security.oauth2.server.resource.authentication.JwtAuthenticationToken;
 import org.springframework.stereotype.Component;
 
-import com.fasterxml.jackson.core.type.TypeReference;
-import com.fasterxml.jackson.databind.ObjectMapper;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.List;
 
 @Component
 public class JwtAuthConverter implements Converter<Jwt, AbstractAuthenticationToken> {
@@ -27,16 +23,13 @@ public class JwtAuthConverter implements Converter<Jwt, AbstractAuthenticationTo
     }
 
     private Collection<GrantedAuthority> extractAuthorities(Jwt jwt) {
-       if (jwt.getClaim("roles") != null) {
-           List<String> realmAccess = jwt.getClaim("roles");
-           // ObjectMapper mapper = new ObjectMapper();
-          //  List<String> keycloakRoles = mapper.convertValue(realmAccess.get(), new TypeReference<List<String>>() {
-           // }
-       //);
+        if (jwt.getClaim("roles") != null) {
+            List<String> roles1 = jwt.getClaim("roles");
+
             List<GrantedAuthority> roles = new ArrayList<>();
 
-            for (String keycloakRole :realmAccess) {
-                roles.add(new SimpleGrantedAuthority(keycloakRole));
+            for (String ADRole : roles1) {
+                roles.add(new SimpleGrantedAuthority(ADRole));
             }
 
             return roles;
