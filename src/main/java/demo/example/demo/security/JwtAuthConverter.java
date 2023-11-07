@@ -21,7 +21,7 @@ public class JwtAuthConverter implements Converter<Jwt, AbstractAuthenticationTo
         Collection<GrantedAuthority> roles = extractAuthorities(jwt);
         return new JwtAuthenticationToken(jwt, roles);
     }
-    
+
 
     private Collection<GrantedAuthority> extractAuthorities(Jwt jwt) {
         if (jwt.getClaim("roles") != null) {
